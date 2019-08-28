@@ -1,7 +1,7 @@
 {
-    "name": "spatie/browsershot",
+    "name": "info2soft/browsershot",
     "description": "Convert a webpage to an image or pdf using headless Chrome",
-    "homepage": "https://github.com/spatie/browsershot",
+    "homepage": "https://github.com/info2soft/browsershot",
     "keywords":
     [
         "convert",

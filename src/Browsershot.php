@@ -13,6 +13,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 /** @mixin \Spatie\Image\Manipulations */
 class Browsershot
 {
+    protected $cwd = null;
     protected $nodeBinary = null;
     protected $npmBinary = null;
     protected $nodeModulePath = null;
@@ -68,6 +69,13 @@ class Browsershot
         if (! $deviceEmulate) {
             $this->windowSize(800, 600);
         }
+    }
+
+    public function setCwd(string $cwd)
+    {
+        $this->cwd = $cwd;
+
+        return $this;
     }
 
     public function setNodeBinary(string $nodeBinary)
@@ -672,7 +680,7 @@ class Browsershot
     {
         $fullCommand = $this->getFullCommand($command);
 
-        $process = Process::fromShellCommandline($fullCommand)->setTimeout($this->timeout);
+        $process = Process::fromShellCommandline($fullCommand, $this->cwd)->setTimeout($this->timeout);
 
         $process->run();
 
